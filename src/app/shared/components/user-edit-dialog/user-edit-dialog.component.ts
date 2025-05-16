@@ -21,6 +21,6 @@ export class UserEditDialogComponent {
     }
 
     save(): void {
-      this.dialogRef.close(this.user); // ✅ Επιστροφή των ενημερωμένων δεδομένων
+      this.dialogRef.close(this.user); 
     }
 }

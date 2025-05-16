@@ -27,6 +27,6 @@ export class UserCreateDialogComponent {
   }
 
   register(): void {
-    this.dialogRef.close(this.newUser); // ✅ Επιστροφή των δεδομένων του νέου χρήστη
+    this.dialogRef.close(this.newUser); 
   }
 }

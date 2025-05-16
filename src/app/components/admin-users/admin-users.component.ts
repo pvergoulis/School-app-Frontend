@@ -52,7 +52,7 @@ export class AdminUsersComponent {
     if (confirmDelete) {
         this.adminUserService.deleteOneUser(username).subscribe(() => {
             alert('Ο χρήστης διαγράφηκε επιτυχώς!');
-            this.getAllUsers(); // ✅ Ενημέρωση της λίστας χρηστών μετά τη διαγραφή
+            this.getAllUsers(); 
         }, (error) => {
             console.error('Σφάλμα στη διαγραφή χρήστη:', error);
             alert('Πρόβλημα στη διαγραφή του χρήστη.');
@@ -63,7 +63,7 @@ export class AdminUsersComponent {
   openEditDialog(user: adminUser): void {
     const dialogRef = this.dialog.open(UserEditDialogComponent, {
       width: '400px',
-      data: { ...user } // ✅ Στέλνουμε τα δεδομένα του χρήστη
+      data: { ...user } 
     });
 
     dialogRef.afterClosed().subscribe(updatedUser => {
@@ -76,7 +76,7 @@ export class AdminUsersComponent {
     updateUser(updatedUser: adminUser) {
     this.adminUserService.updateUser(updatedUser).subscribe(() => {
       alert('Ο χρήστης ενημερώθηκε επιτυχώς!');
-      this.getAllUsers(); // ✅ Ενημέρωση της λίστας χρηστών
+      this.getAllUsers(); 
     }, error => {
       console.error('Σφάλμα στην ενημέρωση χρήστη:', error);
       alert('Πρόβλημα στην ενημέρωση του χρήστη.');
@@ -100,7 +100,7 @@ export class AdminUsersComponent {
   createUser(newUser: adminUser) {
     this.adminUserService.createUser(newUser).subscribe(() => {
       alert('Ο χρήστης δημιουργήθηκε επιτυχώς!');
-      this.getAllUsers(); // ✅ Ενημέρωση της λίστας χρηστών
+      this.getAllUsers();
     }, error => {
       console.error('Σφάλμα στη δημιουργία χρήστη:', error);
       alert('Πρόβλημα στη δημιουργία του χρήστη.');

@@ -16,11 +16,11 @@ export class StudentDialogComponent {
   ) {}
 
   save() {
-    this.dialogRef.close(this.student); // Επιστροφή των ενημερωμένων δεδομένων
+    this.dialogRef.close(this.student); 
   }
 
   cancel() {
-    this.dialogRef.close(); // Κλείσιμο χωρίς αποθήκευση
+    this.dialogRef.close(); 
   }
 
 
