@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Ενημέρωση Χρήστη</h2>
+<mat-dialog-content>
+  <label>Username:</label>
+  <input [(ngModel)]="user.username" type="text" class="form-control" disabled>
+
+  <label>Email:</label>
+  <input [(ngModel)]="user.email" type="email" class="form-control">
+
+  <label>Ρόλος:</label>
+  <select [(ngModel)]="user.roles" class="form-control">
+    <option value="ADMIN">Admin</option>
+    <option value="TEACHER">Teacher</option>
+    <option value="STUDENT">Student</option>
+  </select>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex justify-content-between">
+  <button mat-button class="btn btn-success" (click)="save()">Αποθήκευση Αλλαγών</button>
+  <button mat-button class="btn btn-danger" (click)="close()">Έξοδος</button>
+</mat-dialog-actions>

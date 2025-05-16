@@ -1,0 +1,105 @@
+<div class="w-auto vh-100">
+  <app-navbar-before-login></app-navbar-before-login>
+  <div class="container-fluid shadow-lg d-flex ps-0 mb-4 mt-4 gap-4">
+    <div class="">
+      <app-side-bar></app-side-bar>
+    </div>
+    <div class="container-fluid mt-4 mb-1 ">  
+       <div class="container mb-5 ">
+        <div class=" text-center mt-2"> 
+            <h4 class="pb-3 my-color">Διαχείριση συγκεκριμενου Καθηγητή</h4>
+            <input type="text" class="w-50 rounded-pill ps-2" placeholder="Πληκτρολογησε τον Καθηγητή"
+            [(ngModel)]="teacherFirstname"
+            (input)="onInput()"
+            >
+        </div>
+      </div>
+
+      <div class="d-flex container justify-content-center">
+        @if(selectedTeacher){
+
+        
+        <table class="table table-bordered w-50  shadow-lg rounded-4 ">
+             <caption class="text-center">
+              Στοιχία User
+            </caption>
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Ονομα:</td>
+                 <td class="ps-2 pt-2">{{ selectedTeacher.firstname }}</td>
+            </tr>
+
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Επώνυμο</td>
+                 <td class="ps-2 pt-2">{{ selectedTeacher.lastname }}</td>
+            </tr>
+
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Email</td>
+                 <td class="ps-2 pt-2">{{ selectedTeacher.email }}</td>
+            </tr>
+
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">ΑΦΜ </td>
+                 <td class="ps-2 pt-2">{{ selectedTeacher.vat }}</td>
+            </tr>
+
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Πολη </td>
+                 <td class="ps-2 pt-2">{{ selectedTeacher.city }}</td>
+            </tr>
+
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Ηλικία</td> 
+                 <td class="ps-2 pt-2">{{ selectedTeacher.age }}</td>
+            </tr>
+
+             <tr>
+                 <td class="fw-semibold ps-2 pt-2">Μαθήματα</td> 
+                 <td class="ps-2 pt-2">{{ getSubjectsAsString(selectedTeacher.subjects) }}</td>
+            </tr>
+
+             <tr>
+                 <td class="fw-semibold ps-2 pt-2">Βιογραφικό</td> 
+                 <td class="ps-2 pt-2 text-wrap">{{ selectedTeacher.cv }}</td>
+            </tr>
+            <tr>
+                <td class="ps-2 pb-2 pt-2"><button class="btn bg-success text-white rounded-3" (click)="openEditDialog(selectedTeacher)">Ενημέρωση </button></td>
+                <td class="ps-2 pb-2 pt-2"><button class="btn bg-danger text-white rounded-3" (click)="deleteTeacher(selectedTeacher.vat)">Διαγραφή </button></td>
+            </tr>
+        </table>
+        }
+      </div>
+        
+        
+        <h3 class="text-center p-2 my-color">Οι Καθηγητές του Coding Factory <button class="p-2 btn bg-primary text-white" (click)="openCreateDialog()">Δημιουργεία νέου Καθηγητή</button></h3>
+        <table class="table table-bordered table-striped text-wrap text-center shadow-lg">
+        <th class="pointer-event">Όνομα</th>
+        <th class="pointer-event">Επώνυμο</th>
+        <th class="pointer-event"> ΑΦΜ</th>
+        <th class="pointer-event"> Πόλη</th>
+        <th class="pointer-event"> Ηλικία</th>
+        <th class="pointer-event"> Τηλέφωνο</th>
+        <th class="pointer-event"> Email</th>
+        <th class="pointer-event"> Μαθήματα</th>
+        <th class="pointer-event"> Βιογραφικό</th>
+        <tbody>
+         @for(teacher of teacherData; track teacher){
+            <tr class="align-middle text-center">
+                <td> {{teacher.firstname}}</td>
+                <td> {{teacher.lastname}}</td>
+                <td> {{teacher.vat}}</td>
+                <td> {{teacher.city}}</td>
+                <td> {{teacher.age}}</td>
+                <td> {{teacher.phone}}</td>
+                <td> {{teacher.email}}</td>
+                <td>{{ getSubjectsAsString(teacher.subjects) }}</td>
+                <td> <button class="btn bg-secondary" (click)="openDialog(teacher)">Βιογραφικό</button></td>
+            </tr>
+         }
+        </tbody>
+      </table>
+     
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,41 @@
+<div class="w-auto vh-100">
+    <app-navbar-before-login></app-navbar-before-login>
+    <div class="container">
+        <div class=" mt-3 text-center p-2">
+            <img src="assets/images/aueb.jpg" alt="" class="my-image">
+        </div>
+
+        <div class="mt-5 mb-5">
+            <h3 class="text-center my-color-brown">Οι Καθηγητες του Coding Factory</h3>
+        </div>
+        <div class="mt-5 mb-5">
+            <table class="table table-bordered table-striped text-wrap text-center shadow-lg">
+                <thead>
+                    <th>Όνομα</th>
+                    <th>Επώνυμο</th>
+                    <th>Ηλικία</th>
+                    <th>Τηλέφωνο</th>
+                    <th>Email</th>
+                    <th>Μαθήματα</th>
+                    <th>Βιογραφικο</th>
+                </thead>
+                <tbody>
+                    @for(teacher of teacherData; track teacher){
+                        <tr class="align-middle text-center">
+                            <td>{{teacher.firstname}}</td>
+                            <td>{{teacher.lastname}}</td>
+                            <td>{{teacher.age}}</td>
+                            <td>{{teacher.phone}}</td>
+                            <td>{{teacher.email}}</td>
+                            <td>{{ getSubjectsAsString(teacher.subjects) }}</td>
+                            <td><button class="btn btn-secondary" (click)="openDialog(teacher)">Βιογραφικο</button></td>
+                            
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

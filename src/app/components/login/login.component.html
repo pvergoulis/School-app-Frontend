@@ -1,0 +1,42 @@
+<div class="d-flex flex-column min-vh-100">
+  <app-navbar-before-login></app-navbar-before-login>
+  <div class="flex-grow-1">
+    <div
+      class="p-1 me-3 ms-3 h-auto mb-5 d-flex justify-content-center flex-column"
+    >
+      @if(successLogin){
+                <div class="bg-success w-25 h-25 me-auto ms-auto mt-5 text-center border rounded-5">
+                    <p class="text-white text-center pt-2 text-sm">Επιτυχεις Συνδεση!</p>
+                </div>
+        
+    }
+    </div>
+    <div class="container">
+      <div class="mt-5 border border-2 rounded-2 p-4 w-50 mx-auto">
+        <h4 class="text-primary text-center p-3">Είσοδος στον Λογιριασμό σας</h4>
+        <form class="d-flex flex-column" [formGroup]="form">
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username"/>
+            <mat-error>Παρακαλώ εισαγεται το username σας</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Κωδικός</mat-label>
+            <input type="password" matInput formControlName="password"/>
+            <mat-error>Παρακαλώ εισαγεται τον κωδικό σας</mat-error>
+          </mat-form-field>
+          <button mat-flat-button
+            [disabled]="form.invalid"
+            (click)="onSubmit()"
+          >Σύνδεση</button>
+          <div class="text-center mt-3">
+            <span class="text-center">
+              Δεν έχεις λογαριασμό; <a routerLink="/register"> Εγγραφείτε εδώ</a>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

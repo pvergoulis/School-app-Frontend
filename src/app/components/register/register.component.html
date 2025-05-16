@@ -1,0 +1,76 @@
+<div class="w-auto vh-100">
+  <app-navbar-before-login></app-navbar-before-login>
+  <div
+    class="p-1 me-3 ms-3 h-auto mb-5 d-flex justify-content-center flex-column"
+  >
+   
+
+    <div
+      class="d-flex flex-column gap-3 mt-5 border border-2 rounded-2 p-4 align-items-center mx-auto"
+    >   
+         @if(registrationStatusSuccess){
+    <div class="alert alert-success mt-2 w-50">
+      <strong>Success</strong> <span>Επιτυχές Εγγραφή</span>
+    </div>
+    } @else {
+        @if (registrationStatusFailed) {
+            <div class="alert alert-success mt-2 w-50">
+            <strong>Failed</strong> <span>Σφαλμα κατα την Εγγραφή</span>
+    </div>
+        }
+    }
+
+      <h4 class="text-primary">Δημιουργεία Λογιριασμού</h4>
+      <p>Παρακαλώ εισαγεται τα στοιχεία σας :</p>
+      <form [formGroup]="form" class="d-flex flex-column">
+        <mat-form-field>
+          <mat-label>Όνομα χρήστη</mat-label>
+          <input type="text" matInput formControlName="username" (blur)="check_dublicate_username()"/>
+          <mat-error>Το όνομα χρήστη είναι υποχρεωτικό πεδίο</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input type="text" matInput formControlName="email" (blur)="check_dublicate_email()" />
+            @if (form.get("email")?.hasError("dublicateEmail")) {
+          <mat-error>To email υπαρχει. Δηλωστε καποιο αλλο</mat-error>
+        } @else if (form.get("email")?.invalid && form.get("email")?.touched) {
+           <mat-error>Το email είναι υποχρεωτικό πεδίο</mat-error>
+          }
+          
+        
+          <mat-error>To email υπαρχει. Δηλωστε καποιο αλλο</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Κωδικός</mat-label>
+          <input type="password" matInput formControlName="password" />
+          @if (form.get("password")?.invalid && form.get("password")?.touched) {
+          <mat-error>Ο κωδικός λείπει ή δεν είναι έγκυρος</mat-error>
+        }  
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Επιβεβαίωση κωδικού </mat-label>
+          <input type="password" matInput formControlName="confirmPassword" />
+           @if (form.get("confirmPassword")?.hasError("passwordMismatch")) {
+          <mat-error>Ο κωδικος δεν ταιριαζει</mat-error>
+        } @else if (
+            form.get("confirmPassword")?.invalid &&
+            form.get("confirmPassword")?.touched
+          ) {
+            <mat-error>Η Επιβεβαίωση κωδικού είναι υποχρεωτικό πεδίο ή δεν ειναι έγκυρο</mat-error>
+          }
+         
+        
+          
+        </mat-form-field>
+        <button mat-flat-button [disabled]="form.invalid" (click)="onSubmit()">
+          Υποβολή
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

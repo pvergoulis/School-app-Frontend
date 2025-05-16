@@ -1,0 +1,13 @@
+.my-color-brown {
+    color: rgb(124, 48, 48);
+}
+.my-image{
+    width: 80%
+    
+}
+
+@media (max-with:450px){
+    .my-image{
+        width: 80%;
+    }
+}

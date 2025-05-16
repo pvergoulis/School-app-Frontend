@@ -1,0 +1,29 @@
+.footer-color {
+    background-color: rgb(56, 53, 53);
+}
+.insta-span{
+    border:1px solid  palevioletred;
+    background-color: palevioletred;
+    border-radius: 35px;
+}
+
+.linkedin-span{
+   
+    border: 1px solid rgb(59, 59, 117);
+    background-color: rgb(59, 59, 117);
+     border-radius: 35px;
+     
+}
+
+
+
+
+.twitter-span{
+     border: 1px solid rgb(38, 157, 197);
+    background-color: rgb(38, 157, 197);
+     border-radius: 35px;
+}
+
+.hover-link:hover{
+    text-decoration: underline;
+}

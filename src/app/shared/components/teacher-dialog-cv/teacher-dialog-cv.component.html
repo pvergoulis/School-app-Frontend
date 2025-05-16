@@ -1,0 +1,14 @@
+<h2 mat-dialog-title class="m-2">Πληροφορίες Καθηγητή</h2>
+<div mat-dialog-content class="p-2 m-2">
+  <label>Όνομα:</label>
+  <input [(ngModel)]="teacher.firstname" type="text" class="form-control" disabled>
+  
+  <label>Επώνυμο:</label>
+  <input [(ngModel)]="teacher.lastname" type="text" class="form-control" disabled>
+  
+  <label>Βιογραφικό:</label>
+  <textarea [(ngModel)]="teacher.cv" class="form-control" rows="5" disabled></textarea>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-around mb-2">
+  <button mat-button class="btn btn-danger" (click)="close()">Κλείσιμο</button>
+</div>

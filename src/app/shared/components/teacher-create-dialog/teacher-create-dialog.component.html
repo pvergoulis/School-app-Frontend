@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Δημιουργία Νέου Καθηγητή</h2>
+<mat-dialog-content>
+  <label>Όνομα:</label>
+  <input [(ngModel)]="newTeacher.firstname" type="text" class="form-control">
+
+  <label>Επώνυμο:</label>
+  <input [(ngModel)]="newTeacher.lastname" type="text" class="form-control">
+
+  <label>ΑΦΜ:</label>
+  <input [(ngModel)]="newTeacher.vat" type="text" class="form-control">
+
+  <label>Πόλη:</label>
+  <input [(ngModel)]="newTeacher.city" type="text" class="form-control">
+
+  <label>Ηλικία:</label>
+  <input [(ngModel)]="newTeacher.age" type="number" class="form-control">
+
+  <label>Τηλέφωνο:</label>
+  <input [(ngModel)]="newTeacher.phone" type="text" class="form-control">
+
+  <label>Email:</label>
+  <input [(ngModel)]="newTeacher.email" type="email" class="form-control">
+
+  <label>Βιογραφικό:</label>
+  <textarea [(ngModel)]="newTeacher.cv" class="form-control" rows="5"></textarea>
+
+  <label>Μαθήματα:</label>
+  <div class="d-flex gap-2">
+    <input [(ngModel)]="subjectName" type="text" class="form-control" placeholder="Προσθήκη Μαθήματος">
+    <button class="btn btn-info" (click)="addSubject()">Προσθήκη</button>
+  </div>
+  
+  <ul>
+  @for( subject of newTeacher.subjects; track subject){
+    <li>{{ subject.subjectName }}</li>
+  }
+  </ul>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex justify-content-between">
+  <button mat-button class="btn btn-success" (click)="register()">Εγγραφή</button>
+  <button mat-button class="btn btn-danger" (click)="close()">Έξοδος</button>
+</mat-dialog-actions>
+

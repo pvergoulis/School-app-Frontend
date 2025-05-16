@@ -1,0 +1,116 @@
+<div class="w-auto vh-100">
+  <app-navbar-before-login></app-navbar-before-login>
+  <div class="container">
+    <div class="mt-5  p-4">
+      <h3 class="text-center my-color-brown">Βρες τον μαθητή που ψάχνεις</h3>
+      <div class="mx-auto text-center mt-3">
+        <input
+          type="text"
+          class="rounded-pill border-2 shadow-lg border-primary w-25 mx-auto ps-2"
+          [(ngModel)]="studentName"
+          (input)="onInput()"
+          placeholder="Πληκτρολογησε το ονομα του μαθητη"
+        />
+      </div>
+    </div>
+
+    
+    <div class="d-flex container justify-content-center">
+      @if(selectedStudent){
+      <table class="table table-bordered w-50 border-1 shadow-lg rounded-4">
+        <caption class="text-center">
+          Στοιχία Μαθητή
+        </caption>
+        <tr>
+          <td class="fw-semibold ps-2">Όνομα:</td>
+          <td class="ps-2">{{ selectedStudent.firstname }}</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold ps-2">Επωνυμο:</td>
+          <td class="ps-2">{{ selectedStudent.lastname }}</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold ps-2">Email:</td>
+          <td class="ps-2">{{ selectedStudent.email }}</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold ps-2">Τηλέφωνο:</td>
+          <td class="ps-2">{{ selectedStudent.phone }}</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold ps-2">Ηλικία:</td>
+          <td class="ps-2">{{ selectedStudent.age }}</td>
+        </tr>
+
+        <tr>
+          <td class="fw-semibold ps-2">Μαθήματα & Βαθμοί:</td>
+          @for (subject of selectedStudent.subjects; track subject.subjectName
+          ?? subject) {
+          <div>{{ subject.subjectName }} - {{ subject.grade }}</div>
+          }
+        </tr>
+          
+       
+      </table>
+       @if(user()?.roles?.includes("ADMIN") || user()?.roles?.includes("TEACHER")){
+          <div class=" d-flex flex-column gap-4 ms-2">
+            <button class="btn btn-success h-25" (click)="updateStudent()">Ενημέρωση</button>
+            <button class="btn btn-danger h-25" (click)="deleteStudent()"> Διαγραφη</button>
+          </div>
+        }
+      }
+    </div>
+    <div class="mt-5 mb-5">
+      <h3 class="text-center my-color-brown">Οι μαθητές του Coding Factory</h3>
+      @if(user()?.roles?.includes("ADMIN") || user()?.roles?.includes("TEACHER")){
+        <button class="btn btn-primary" (click)="addStudent()">Εισαγωγή μαθητή</button>
+      }
+    </div>
+    <div class="mt-5 mb-5 ">
+      <table class="table table-bordered table-striped text-wrap text-center shadow-lg">
+        <th (click)="sortStudents('firstname')" class="pointer-event">Όνομα
+          @if(sortColumn === 'firstname'){
+          <span>{{ sortDirection === 'asc' ? '🔼' : '🔽' }}</span>
+          }
+        </th>
+        
+        <th (click)="sortStudents('lastname')" class="pointer-event">
+          @if(sortColumn === 'lastname'){
+          <span>{{ sortDirection === 'asc' ? '🔼' : '🔽' }}</span>
+          }
+          Επωνυμο</th>
+
+        <th (click)="sortStudents('email')" class="pointer-event">
+          @if(sortColumn === 'email'){
+          <span>{{ sortDirection === 'asc' ? '🔼' : '🔽' }}</span>
+          }
+          Email</th>
+
+        <th (click)="sortStudents('phone')" class="pointer-event">
+          @if(sortColumn === 'phone'){
+          <span>{{ sortDirection === 'asc' ? '🔼' : '🔽' }}</span>
+          }
+          Τηλέφωνο</th>
+          
+        <th (click)="sortStudents('age')" class="pointer-event">
+          @if(sortColumn === 'age'){
+          <span>{{ sortDirection === 'asc' ? '🔼' : '🔽' }}</span>
+          }
+          Ηλικία</th>
+
+        <tbody>
+          @for(student of studentData; track student){
+          <tr class="align-middle text-center">
+            <td>{{ student.firstname }}</td>
+            <td>{{ student.lastname }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.phone }}</td>
+            <td>{{ student.age }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

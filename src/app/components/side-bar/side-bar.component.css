@@ -1,0 +1,28 @@
+nav {
+ 
+    background-color: rgb(124, 48, 48);
+    height: 500px;
+    width: 100%;
+}
+
+a {
+    transition: all 1.50s ease;
+    color: rgb(255, 255, 255);
+
+}
+
+a:hover{
+  
+    transform: scale(1.2);
+    color:rgb(124, 48, 48)
+}
+
+.my-div{
+    background-color: rgb(124, 48, 48);
+    transition: all 1.50s ease;
+}
+
+.my-div:hover {
+    background-color: white;
+}
+

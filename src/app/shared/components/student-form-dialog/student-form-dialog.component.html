@@ -1,0 +1,23 @@
+<h2 mat-dialog-title class="m-2">Εισαγωγή Νέου Μαθητή</h2>
+<div mat-dialog-content class="p-2 m-2">
+  <label>Όνομα:</label>
+  <input [(ngModel)]="student.firstname" type="text" class="form-control">
+  
+  <label>Επώνυμο:</label>
+  <input [(ngModel)]="student.lastname" type="text" class="form-control">
+  
+  <label>Email:</label>
+  <input [(ngModel)]="student.email" type="email" class="form-control">
+  
+  <label>Τηλέφωνο:</label>
+  <input [(ngModel)]="student.phone" type="text" class="form-control">
+
+  <label>Ηλικία:</label>
+  <input [(ngModel)]="student.age" type="number" class="form-control">
+</div>
+<div mat-dialog-actions class="d-flex justify-content-around mb-2">
+  <button mat-button class="btn btn-primary" (click)="save()">Αποθήκευση</button>
+  <button mat-button class="btn btn-danger" (click)="cancel()">Άκυρο</button>
+  
+</div>
+

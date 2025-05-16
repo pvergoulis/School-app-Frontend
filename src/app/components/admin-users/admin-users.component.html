@@ -1,0 +1,69 @@
+<div class="w-auto vh-100">
+  <app-navbar-before-login></app-navbar-before-login>
+  <div class="container-fluid shadow-lg d-flex ps-0 mb-4 mt-4 gap-4">
+    <div class="">
+      <app-side-bar></app-side-bar>
+    </div>
+    <div class="container-fluid mt-4 mb-1 ">  
+       <div class="container mb-5 ">
+        <div class=" text-center mt-2"> 
+            <h4 class="pb-3 my-color">Διαχείριση συγκεκριμενου User</h4>
+            <input type="text" class="w-50 rounded-pill ps-2" placeholder="Πληκτρολογησε τον User"
+            [(ngModel)]="userUsername"
+            (input)="onInput()"
+            >
+        </div>
+      </div>
+
+      <div class="d-flex container justify-content-center">
+        @if(selectedUser){
+
+        
+        <table class="table table-bordered w-50  shadow-lg rounded-4 ">
+             <caption class="text-center">
+              Στοιχία User
+            </caption>
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Username:</td>
+                 <td class="ps-2 pt-2">{{ selectedUser.username }}</td>
+            </tr>
+
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Email</td>
+                 <td class="ps-2 pt-2">{{ selectedUser.email }}</td>
+            </tr>
+
+            <tr>
+                 <td class="fw-semibold ps-2 pt-2">Ρόλος</td>
+                 <td class="ps-2 pt-2">{{ selectedUser.roles }}</td>
+            </tr>
+
+            <tr>
+                <td class="ps-2 pb-2 pt-2"><button class="btn bg-success text-white rounded-3" (click)="openEditDialog(selectedUser)">Ενημέρωση χρήστη</button></td>
+                <td class="ps-2 pb-2 pt-2"><button class="btn bg-danger text-white rounded-3" (click)="deleteUser(selectedUser.username)">Διαγραφή χρήστη</button></td>
+            </tr>
+        </table>
+        }
+      </div>
+        
+        
+        <h3 class="text-center p-2 my-color">Οι Users του Coding Factory <button class="p-2 btn bg-primary text-white" (click)="openCreateDialog()">Δημιουργεία νέου User</button></h3>
+        <table class="table table-bordered table-striped text-wrap text-center shadow-lg">
+        <th class="pointer-event">Username</th>
+        <th class="pointer-event">Email</th>
+        <th class="pointer-event"> Ρόλος</th>
+        <tbody>
+         @for(user of userData; track user){
+            <tr class="align-middle text-center">
+                <td> {{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roles}}</td>
+            </tr>
+         }
+        </tbody>
+      </table>
+     
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
