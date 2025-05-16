@@ -16,8 +16,14 @@ Front end of school app
 
 To start a local development server, run:
 
-npm install
-ng serve
+```npm install
+  ng serve
+```
+
+# Login as
+  Login as admin Username : admin , password : 12345
+  Login as TEACHER Username : a8ana , password : 12345,
+  Login as STUDENT Userbane : glodge, password : 12345
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
