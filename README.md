@@ -22,7 +22,7 @@ npm install
 ```
 
 # Login as
-1. Login as admin Username : admin , password : 12345
+1. Login as ADMIN Username : admin , password : 12345
 2. Login as TEACHER Username : a8ana , password : 12345,
 3. Login as STUDENT Userbane : glodge, password : 12345
 
